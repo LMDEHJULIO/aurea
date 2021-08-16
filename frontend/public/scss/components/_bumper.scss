@@ -1,0 +1,284 @@
+// .bumper {
+//     margin-bottom: 9rem;
+//     background-color: transparent;
+//     display: flex;
+//     flex-direction: row;
+  
+//     @media screen and (min-width: 768px) {
+//       margin: 0 6rem 9rem 6rem;
+//     }
+  
+//     @media screen and (min-width: 1024px) {
+//       justify-content: center;
+//       margin: 0 16rem 9rem 11rem;
+//     }
+  
+//     @media screen and (min-width: 1440px) {
+//       margin: 0 23rem 9rem 18rem;
+//     }
+  
+//     @media screen and (min-width: 2560px){
+//       margin: 0 43rem 9rem 38rem;
+//     }
+  
+  
+  
+//     // &--furniture {
+//     //   margin-bottom: 5rem;
+//     // }
+  
+//     .bumper-label {
+  
+      
+//       align-self: center;
+//       @media screen and (min-width: 1024px) {
+//         margin-right: 4rem;
+//       }
+      
+//       &__text {
+//         writing-mode: tb-rl;
+//         transform: rotate(-180deg);
+//         text-transform: uppercase;
+//         font-weight: 400;
+//         font-size: 1.5rem;
+//         display: none;
+//         letter-spacing: .15rem;
+  
+//         span {
+//           color: red;
+//         }
+  
+//         @media screen and (min-width: 1024px) {
+//           display: inline;
+//         }
+//       }
+  
+  
+//     }
+  
+//     &__img {
+//       // height: 17rem;
+//       width: 100%;
+  
+//       // @media screen and (min-width: 479px) {
+//       //   height: 27rem;
+//       // }
+  
+//       // @media screen and (min-width: 768px) {
+//       //   height: 35rem;
+//       // }
+  
+//       // @media screen and (min-width: 1440px) {
+//       //   height: 74rem;
+//       // }
+  
+//       &--furniture {
+//         background-image: url(../../assets/img/bedding.jpg);
+//         background-size: cover; 
+  
+//       }
+  
+//       &--object {
+//         background-image: url(../img/kitchen.jpg);
+//         background-size: cover;
+//       }
+//     }
+  
+//     .bumper-body {
+//       display: flex;
+//       flex-direction: column;
+//     }
+  
+//     &__content {
+//       padding: 2rem;
+//       background-color: white;
+//       height: 22rem;
+//       font-family: sans-serif;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: space-between;
+//       -webkit-box-shadow: 0px 10px 23px 0px rgba(0, 0, 0, 0.07);
+//       -moz-box-shadow: 0px 10px 23px 0px rgba(0, 0, 0, 0.07);
+//       box-shadow: 0px 10px 23px 0px rgba(0, 0, 0, 0.07);
+  
+//       @media screen and (min-width: 479px) {
+//         width: 75%;
+//         align-self: center;
+//         margin-top: -6rem;
+  
+//         text-align: center;
+//         padding: 3rem 7rem; 
+//       }
+  
+//       @media screen and (min-width: 768px) {
+//         width: 75%;
+//         align-self: center;
+//         margin-top: -10rem;
+  
+//         text-align: center;
+//         padding: 3rem 7rem; 
+//       }
+  
+//       @media screen and (min-width: 1024px) {
+//         height: 30rem;
+//         width: 88%;
+//         align-self: center;
+//         margin-top: -25rem;
+//       }
+  
+//       @media screen and (min-width: 1440px) {
+//         height: 19rem;
+//         margin-top: -11rem;
+//       }
+  
+//       @media screen and (min-width: 2560px) {
+//         width: 56%;
+//       }
+  
+  
+  
+  
+  
+//       h3 {
+//         font-weight: 600;
+//         letter-spacing: 0.2rem;
+//         font-size: 1.4rem;
+//         text-transform: uppercase;
+//         text-align: center;
+//         }
+  
+//       p {
+//         font-size: 1.8rem;
+//         line-height: 2.5rem;
+//         letter-spacing: .04rem;
+//       }
+  
+//       a {
+//         text-align: right;
+//         color: #c62828;
+//         text-transform: uppercase;
+//         font-size: 1.4rem;
+//         font-weight: 600;
+//         letter-spacing: .1rem;
+//       }
+//     }
+//   }
+  
+  // .img-bumper{
+  //   background-image: url(../../assets/img//couch-corner.jpg);
+  //   background-size: cover;
+  //   width: 100%;
+  //   min-height: 31rem;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   color: white;
+  //   display: flex;
+  //   align-items: center;
+  //   padding: 2rem;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: flex-start;
+  
+  //   h3 {
+  //     font-size: 1.8rem;
+  //     margin-bottom: 2rem;
+  //   }
+  
+  //   @media screen and (min-width: 768px){
+  //     height: 69rem;
+  //   }
+  
+  //   @media screen and (min-width: 1024px) {
+  //     height: 61rem;
+  //     display: flex;
+  //     flex-direction: column;
+  //     h3 {
+  //       font-size: 2rem;
+  //     } 
+  //   }
+  
+  //   @media screen and (min-width: 2560px){
+  //     height: 110rem;
+  //   }
+  
+  //   &__cta {
+  //     display: flex;
+  //     flex-direction: row;
+  //     align-items: center;
+  //   }
+  
+  //   .title-box__cta-arrow {
+  //     border: solid 1px grey;
+  //     width: 4.5rem;
+  //     height: 4.5rem;
+  //     border-radius: 100%;
+  //     display: inline-block;
+  //     margin-right: 1rem;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  
+  //     img {
+  //       width: 1.8rem;
+  //     }
+  //   }
+  
+   
+  // a {
+  //   text-transform: uppercase;
+  //   color: #d60808;
+  //   font-size: 1.5rem;
+  //   letter-spacing: .2rem;
+  //   line-height: 1.5rem;
+  
+  // }
+  
+  
+  
+  
+  // }
+  
+  .slider-bumper {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .image {
+    width: 1000px;
+    height: 600px;
+    border-radius: 10px;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    color: #000; 
+    z-index: 10;
+    cursor: pointer;
+    user-select:none; 
+  
+    &--right {
+      right: 32px;
+    }
+  
+    &--left {
+      left: 32px;
+    }
+  }
+  
+  .slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+    &.active {
+      opacity: 1; 
+      transition-duration: 1s;
+      transform: scale(1.08);
+    }
+  }
+  
+  
