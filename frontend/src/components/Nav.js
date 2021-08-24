@@ -7,10 +7,10 @@ import {BiSearch} from 'react-icons/bi'
 
 const NavStyle = styled.nav`
 
-    height: 6rem;
+    height: 7rem;
     display: flex;
     justify-content: space-between;
-    padding: 6rem 0;
+    padding: 1rem 2rem;
     align-items: center;
     background-color: white;
     position: fixed;
@@ -18,7 +18,8 @@ const NavStyle = styled.nav`
     z-index: 999;
   
     @media screen and (min-width: 767px) {
-     
+      height: 8rem;
+     padding: 2rem;
     }
   
   
@@ -35,7 +36,9 @@ const NavStyle = styled.nav`
 
 .nav-logo__link {
 
-  transform: rotate(-90deg);
+  @media screen and (min-width: 1024px){
+    transform: rotate(-90deg);
+  }
 
   .nav-logo {
     width: 10rem;

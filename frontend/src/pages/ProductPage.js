@@ -1,32 +1,116 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import stlyed from 'styled-components';
 import {Link} from 'react-router-dom';
 import { detailsProduct } from '../actions/productActions';
 import {addToCart, removeFromCart} from '../actions/cartActions';
 import ProductTile from '../components/ProductTile';
+import styled from 'styled-components';
+import ProductDetails from '../components/ProductDetails';
+import ProductReviews from '../components/ProductReviews';
+const ProductPageStyle = styled.div`
 
+.product-content {
+    // padding-top: 8rem;
+}
+
+/* .product-display {
+    padding: 0 2rem;
+} */
+
+.details-section {
+    padding: 2rem;
+
+
+    
+    @media screen and (min-width: 1024px){
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 5rem;
+
+        .details-summary {
+            width: 50%;
+        }
+    }
+
+    .product-detail-list {
+        font-size: 1.8rem;
+        font-weight: 300;
+        padding-left: 2rem;
+
+        li {
+            
+            color: grey;
+            list-style-type: disc;
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+
+    }
+}
+
+.details-summary{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 28rem;
+}
+
+.cards {
+
+
+    @media screen and (min-width: 1024px){
+        width: 50%;
+    }
+
+}
+
+.detail-cards {
+    display: grid;
+    grid-gap: 4rem;
+    margin: 0 auto;
+
+    @media screen and (min-width: 1024px){
+        width: min-content;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 2rem;
+    }
+}
+
+.detail-card {
+    background-color: white;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+    width: 100%;
+
+    @media screen and (min-width: 1024px){
+        height: 20rem;
+        width: 20rem;
+
+    }
+
+    &__image {
+        width: 4rem;
+    }
+
+    /* &:not(:last-child) {
+        margin-bottom: 3.5rem;
+    } */
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+`
 
 
 const ProductPage = (props) => {
-    const dispatch = useDispatch();
-    const [qty, setQty] = useState(1);
-    const productId = props.match.params.id;
-    const productDetails = useSelector(state => state.productDetails);
-    const {product, loading, error} = productDetails;
-   
 
-    useEffect(() => {
-        dispatch(detailsProduct(productId))
-
-    }, [dispatch, productId]);
-
-    const handleAddToCart = (e) => {
-        e.preventDefault()
-
-        // props.history.push(`/cart/${productId}?qty=${qty}`)
-        dispatch(addToCart(productId, qty))
-        props.onAddToCart();
-    }
 
     // const checkoutHandler = (userInfo) => {
     //     if(userInfo){
@@ -38,54 +122,13 @@ const ProductPage = (props) => {
     //Add to a button in order to add to cart
 
     return(
-        loading ? <div>Loading ...</div> : 
-        error ? <div>{error}</div> : 
+
         // clean this up
-        <Fragment>
-            <section className="product-display">
-                <div className="product-display__grid">
-                    <img src={product.image} className="product-display-img product-display-img--1"/>
-                    <img src={product.image}  className="product-display-img product-display-img--2"/>
-                    <img src={product.image}  className="product-display-img product-display-img--3"/>
-                    <img src={product.image}  className="product-display-img product-display-img--4"/>
-                </div>
-
-                <div className="product-display__details">
-                    <h2 className="product-heading">
-                        Product
-                    </h2>
-                
-                    <div className="product__price-desc">
-                        <p className="price">${product.price}</p>
-                        <p className="desc">Lorem ipsum dolor sit amet</p>
-                    </div>
-                    
-                    <div className="product-display__color-selector">
-                        <h5 className="color-heading">Color</h5>
-                        <span className="product-color"></span>
-                    </div>
-
-                    <div className="product-display__cta">
-                        <h2 className="product-cta-heading">Product 7</h2>
-                        <p className="product-cta-subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        
-                        <div>
-
-                            <form className="form--add-to-cart">
-                                <input type="number" id="quantity" min="1" max={product.countInStock} value={qty} onChange={(e)=> setQty(e.target.value)} className="form--add-to-cart__input"/>
-
-                                {product.countInStock > 0 && (
-                                    <input type="submit" value="Add To Cart" className="btn-add-to-cart" onClick={handleAddToCart}/>
-                                )}
-                            </form>
-                        
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <ProductPageStyle>
+            <ProductDetails props={props}/>
 
             <section className="details-section">
-                <div>
+                <div className="details-summary">
                     <h2 className="heading-l w-500 upcase spacing-2">Details</h2>
 
                     <p className="paragraph-l w-500"> 
@@ -101,60 +144,40 @@ const ProductPage = (props) => {
                         <li className="product-detail-list-item">Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet.</li>
                     </ul>
                 </div>
-                <div>
-                    <div className="detail-card">
-                        <img src="" alt=""/>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
 
-                    <div className="detail-card">
-                        <img src="" alt=""/>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
+                <div className="cards">
+                    <div className="detail-cards">
+                        <div className="detail-card">
+                            <img src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab6a2d079ad4_creditcard.svg" className="detail-card__image" alt=""/>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
 
-                    <div className="detail-card">
-                        <img src="" alt=""/>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <div className="detail-card">
+                            <img src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab7180079ae4_customerservice.svg" className="detail-card__image" alt=""/>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
+
+                        <div className="detail-card">
+                            <img src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5b3d079ae5_fastshipping.svg" className="detail-card__image" alt=""/>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
+                </div>
+
+            </section>
+
+            <ProductReviews/>
+
+            <section className="other-products-section">
+                <div class="other-products-container">
+                    <ProductTile/>
+                    <ProductTile/>
+                    <ProductTile/>
+                    <ProductTile/>
                 </div>
             </section>
 
-            <section className="reviews-section">
-                <div>
-                    <h2>Reviews</h2>
-                </div>
-
-                <div className="review-card">
-                    <img src="" alt=""/>
-                    <p>Reviewer on 3/2/19</p>
-                    <p>
-                        Suspendisse varius enim in eros elementum tristique. 
-                        Duis cursus, mi quis viverra ornare, eros dolor 
-                        interdum nulla, ut commodo diam libero vitae erat.
-                    </p>
-                </div>
-
-                <div className="review-card">
-                    <img src="" alt=""/>
-                    <p>Reviewer on 3/2/19</p>
-                    <p>
-                        Suspendisse varius enim in eros elementum tristique. 
-                        Duis cursus, mi quis viverra ornare, eros dolor 
-                        interdum nulla, ut commodo diam libero vitae erat.
-                    </p>
-                </div>
-
-                <div className="review-card">
-                    <img src="" alt=""/>
-                    <p>Reviewer on 3/2/19</p>
-                    <p>
-                        Suspendisse varius enim in eros elementum tristique. 
-                        Duis cursus, mi quis viverra ornare, eros dolor 
-                        interdum nulla, ut commodo diam libero vitae erat.
-                    </p>
-                </div>
-            </section>
-        </Fragment>
+        </ProductPageStyle>
     )
 }
 

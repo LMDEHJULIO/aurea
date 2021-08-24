@@ -17,7 +17,7 @@ import FullWidthBumper from '../components/FullWidthBumper';
 import InstagramWall from '../components/InstagramWall';
 import SubscribeForm from '../components/SubscribeForm';
 import SliderBumper from '../components/SliderBumper';
-// import {SliderData} from '../components/SliderData';
+import {SliderData} from '../components/SliderData';
 
 
 const HomePageStyle = styled.div`
@@ -388,7 +388,13 @@ const HomePage = () => {
             title: 'Utility',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit varius in eros elementum tristique.',
             linkText: 'View the Collection',
-        }
+        },
+        {
+          title: 'Varius Enim',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit varius in eros elementum tristique',
+          linkText: 'View the Collection',
+        },
+
 
     ]
 
@@ -427,11 +433,12 @@ const HomePage = () => {
 
             <a>Read all the news</a>
  
-            <CtaBumper textData={bumperData[2]}/>
+            <SliderBumper slides={SliderData}/>
 
             <FullWidthBumper/>
 
             <InstagramWall/>
+
 
             <SubscribeForm/> 
 

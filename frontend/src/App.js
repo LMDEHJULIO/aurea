@@ -56,6 +56,10 @@ function App() {
 
         main {
           grid-column: 2/3;
+          max-width: 2400px;
+          @media screen and (min-width: 2000px) {
+            margin: 0 auto;
+          }
         }
 
         footer {
