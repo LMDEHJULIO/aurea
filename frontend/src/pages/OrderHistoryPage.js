@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listOrderMine } from '../actions/orderActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/Message';
+import {GrClose} from 'react-icons/gr'
 
 export default function OrderHistoryPage(props) {
   const orderMineList = useSelector((state) => state.orderMineList);

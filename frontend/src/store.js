@@ -1,6 +1,7 @@
 import {applyMiddleware, createStore, compose, combineReducers} from 'redux'; 
 import thunk from 'redux-thunk';
 import { cartReducer } from './reducers/cartReducer';
+import { newsCreateReducer, newsDeleteReducer, newsDetailsReducer, newsListReducer, newsSaveReducer, newsUpdateReducer } from './reducers/newsReducer';
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderMineListReducer, orderListReducer, orderDeleteReducer,} from './reducers/orderReducer';
 import {productCreateReducer, productDeleteReducer, productDetailsReducer, productListReducer, productUpdateReducer} from './reducers/productReducers';
 import { userRegisterReducer, userSigninReducer, userDetailsReducer, userUpdateProfileReducer, } from './reducers/userReducer';
@@ -41,6 +42,12 @@ const initialState = {
     productDelete: productDeleteReducer,
     orderList: orderListReducer,
     orderDelete: orderDeleteReducer,
+    newsList: newsListReducer,
+    newsCreate: newsCreateReducer,
+    newsDelete: newsDeleteReducer,
+    newsSave: newsSaveReducer,
+    newsDetails: newsDetailsReducer,
+    newsUpdate: newsUpdateReducer,
   });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

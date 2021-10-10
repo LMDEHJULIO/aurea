@@ -36,7 +36,7 @@ const ProductCardStyle = styled.div`
   
       h3 {
         color: white;
-        font-size: 2.4rem;
+        font-size: 2rem;
         margin-bottom: 1rem;
         font-weight: 600;
       }

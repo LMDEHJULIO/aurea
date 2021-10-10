@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import styled from 'styled-components';
 import { SliderData } from './SliderData';
 
@@ -15,7 +15,7 @@ const HeroSliderStyle = styled.div`
     background-repeat: no-repeat;
   
     @media screen and (min-width: 767px) {
-      // height: 100vh;
+      // height: 100vh;5rem
       padding: 11rem 4rem 10rem 4rem;
       background-position: 95%; 
     } 
@@ -79,7 +79,8 @@ const HeroSliderStyle = styled.div`
   
         &-arrow {
           border: solid 1px grey;
-          padding: 2rem;
+          min-width: 5rem;
+          min-height: 5rem;
           border-radius: 100%;
           display: inline-block;
           margin-right: 1rem;
@@ -109,17 +110,19 @@ const HeroSliderStyle = styled.div`
     .slider-links {
         
       .slider-dots {
-        background-color: grey;
         display: inline-block;
         width: 1.5rem;
         height: 1.5rem;
         border-radius: 100%;
         margin-right: .5rem;
-      }
+        background-color: #ffffff8f;
 
-      .slider-dots::selection {
+    
+        &:nth-child(${props => props.currentImage + 1}){
           background-color: white;
         }
+      }
+
     }
 `
 
@@ -133,10 +136,10 @@ const Hero = () => {
     <HeroSliderStyle className="hero-slider" currentImage={current}>
 
         <div className="title-box">
-          <h3 className="title-box__category title-box__item">News</h3>
+          <h3 className="title-box__category title-box__item">{SliderData[current].header}</h3>
 
           <h2 className="title-box__heading title-box__item">
-              {SliderData[current].header}
+              {SliderData[current].subHeader}
           </h2>
           
           <div className="title-box__cta">
@@ -146,7 +149,7 @@ const Hero = () => {
         </div>
 
         <div class="slider-links">
-          <a href="#" class="slider-dots" onClick={() =>{ setCurrent(0)}}></a>
+          <a href="#" class="slider-dots" onClick={() => setCurrent(0) }></a>
           <a href="#" class="slider-dots" onClick={() => setCurrent(1)}></a>
           <a href="#" class="slider-dots" onClick={() => setCurrent(2)}></a>
         </div>

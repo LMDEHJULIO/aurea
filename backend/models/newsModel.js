@@ -5,6 +5,8 @@ const newsSchema = new mongoose.Schema({
   date: {type: Date, default: Date.now()},
   image: { type: String, required: true },
   text: {type: String, required: true}
+}, {
+  timestamps: true
 });
 
 const News = mongoose.model("News", newsSchema);

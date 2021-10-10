@@ -1,9 +1,10 @@
 import React, {Fragment, useEffect} from 'react';
-import Nav from '../../components/Nav'
-import BlogList from '../../components/BlogList';
-import BlogCard from '../../components/BlogCard';
-import Footer from '../../components/Footer';
-import {listNews} from '../../actions/newsActions';
+import Nav from '../components/Nav'
+import styled from 'styled-components';
+import BlogList from '../components/BlogList';
+import BlogCard from '../components/BlogCard';
+import Footer from '../components/Footer';
+import {listNews} from '../actions/newsActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const blogData = [
@@ -20,6 +21,38 @@ const blogData = [
 ]
 
 
+const NewsPageStyle = styled.div`
+
+    padding: 2rem 0;
+    grid-template-columns: 2rem auto 2rem;
+    display: grid;
+
+    @media screen and (min-width: 450px){
+        padding: 6rem 0;
+        grid-template-columns: 4rem auto 4rem;
+    }
+    
+
+    .inspiration-content {
+        display: grid;
+        grid-column: 2;
+        grid-template-columns: auto;
+        grid-gap: 3rem;
+        max-width: 108.2rem;
+        margin: 0 auto;
+
+
+        @media screen and (min-width: 577px){
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        @media screen and (min-width: 1024px){
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 3rem;
+        }
+    }
+
+`
 
 const NewsPage = () => {
 
@@ -35,16 +68,14 @@ const NewsPage = () => {
         loading ? <div>Loading ...</div> : 
         error ? <div>{error}</div> : 
 
-        <Fragment>
+        <NewsPageStyle>
     
             <div className="inspiration-content">
-                <BlogList>
-                    {news.map((blog) => <BlogCard blogText={blog}/>)}
-                </BlogList>
+                
+                    {news.map((blog) => <BlogCard blogText={blog} className="blog-card"/>)}
+              
             </div>
-    
-            <Footer/>
-        </Fragment>
+        </NewsPageStyle>
     )
 }
 

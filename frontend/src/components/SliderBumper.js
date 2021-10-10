@@ -5,6 +5,8 @@ import {IoIosArrowDropleft, IoIosArrowDropright} from 'react-icons/io';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import styled from 'styled-components';
 import CtaBumper from './CtaBumper';
+import { CtaBumperStyle } from './CtaBumper';
+
 const SliderStyle = styled.section`
 
   position: relative;
@@ -76,7 +78,7 @@ const SliderStyle = styled.section`
   padding: 1rem;
   /* background-color: black; */
   border: solid 1px grey;
-  border-radius: 100%;
+  border-radius: 100%; 
 
   &--left {
     margin-bottom: 2rem;
@@ -90,7 +92,8 @@ const SliderStyle = styled.section`
 
 .slide {
   opacity: 0;
-  transition-duration: 1s ease;
+  transition: opacity 1s;
+  /* transition-duration: 1s ease; */
   width: 100%;
   position: absolute;
   
@@ -116,37 +119,56 @@ const SliderBumper = ({slides}) => {
       setCurrent(current === 0 ? length - 1 : current - 1)
     }
 
-    console.log(current)
+  
 
   return (
-      <SliderStyle className="slider-bumper">
+      <CtaBumperStyle className="slider-bumper">
+
+        {/* same  */}
         <div className="bumper-label">
           <h4 className="bumper-label__text"><span>Lorem</span> / Ipsum Dolor Sit Amet</h4>
         </div>
      
+        {/* different/children */}
         {
-            slides.map((slide, index) => {
+            slides && slides?.map((slide, index) => {
                 return (
-                    <div className={index === current ? 'slide active' : 'slide'} key = {index}>
+                    <div className={index === current ? "slide active" : "slide"} key = {index}>
+
                         {index === current && (
                             <img src={slide.image} alt="furniture" className="image"/>
+                            
                         )}
-
-                        <div className="bumper-cta">
-                          <h3>Varius Enim</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit varius in eros elementum tristique.</p>
-                        </div>
                     </div>
                 )
             })
         }
-   
 
+        <div className="bumper-cta">
+          <h3>Varius Enim</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit varius in eros elementum tristique.</p>
+        </div>
+{/* 
+        <div className="bumper__content bumper__content--furniture">
+              <h3 className="bumper__title">{props.textData.title}</h3>
+              <p>
+              {props.textData.text}
+              </p>
+              <a>{props.textData.linkText}</a>
+        </div> */}
+
+        {/* <div class="slider-links">
+          <a href="#" class="slider-dots" onClick={() =>{ setCurrent(0)}}></a>
+          <a href="#" class="slider-dots" onClick={() => setCurrent(1)}></a>
+          <a href="#" class="slider-dots" onClick={() => setCurrent(2)}></a>
+        </div> */}
+   
+        {/* //different */}
         <div className="arrow-container">
           <IoIosArrowBack className="arrow arrow--left" onClick={prevSlide}/>
           <IoIosArrowForward className="arrow arrow--right"  onClick={nextSlide}/>
         </div>
-      </SliderStyle>
+      </CtaBumperStyle>
   )
 }
 

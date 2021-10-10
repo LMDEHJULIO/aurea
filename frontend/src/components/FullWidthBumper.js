@@ -21,6 +21,7 @@ const FullBumperStyle = styled.div`
     h3 {
       font-size: 1.8rem;
       margin-bottom: 2rem;
+      font-weight: 400;
     }
   
     @media screen and (min-width: 768px){

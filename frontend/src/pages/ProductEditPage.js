@@ -20,6 +20,7 @@ export default function ProductEditPage(props) {
   const { loading, error, product } = productDetails;
 
   const productUpdate = useSelector((state) => state.productUpdate);
+  
   const {
     loading: loadingUpdate,
     error: errorUpdate,

@@ -4,6 +4,7 @@ import { deleteOrder, listOrders } from '../actions/orderActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/Message';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
+import { ProductListTable } from './ProductListPage';
 
 export default function OrderListPage(props) {
   const orderList = useSelector((state) => state.orderList);
@@ -34,7 +35,7 @@ export default function OrderListPage(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <ProductListTable className="table">
           <thead>
             <tr>
               <th>ID</th>
@@ -80,7 +81,7 @@ export default function OrderListPage(props) {
               </tr>
             ))}
           </tbody>
-        </table>
+        </ProductListTable>
       )}
     </div>
   );

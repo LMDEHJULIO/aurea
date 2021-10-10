@@ -69,7 +69,7 @@ const InstagramWallStyle = styled.div`
 
 const InstagramWall = (props) => {
   return (
-    <section className="section-social">
+    <div>
         <span></span>
         <h1 className="section-social__heading">Instagram Wall</h1>
 
@@ -123,7 +123,7 @@ const InstagramWall = (props) => {
                 <a><img src={`${process.env.PUBLIC_URL}/assets/img/mirrordesk.jpg`} alt="instagram-post yellow-couch"/></a>
             </div>
         </InstagramWallStyle>
-    </section>
+    </div>
   )
 }
 

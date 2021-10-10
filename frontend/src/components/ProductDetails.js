@@ -11,12 +11,10 @@ const ProductDetailsStyle = styled.section`
     flex-direction: column;
 
     @media screen and (min-width: 768px){
-        padding: 2rem 2rem;
     }
 
     @media screen and (min-width: 1024px){
         flex-direction: row;
-        padding: 0 5rem;
     }
 
     .product-display__grid {
@@ -60,9 +58,12 @@ const ProductDetailsStyle = styled.section`
         }
         &--2 {
             grid-area: half-1;
+            object-fit: none;
+            object-position: left;
         }
         &--3 {
             grid-area: half-2;
+            object-fit: none;
         }
         &--4 {
             grid-area: full-2;
@@ -199,9 +200,9 @@ const ProductDetails = ({props}) => {
                 </div>
 
                 <div className="product-display__color-selector">
-                <h5 className="color-heading">Color</h5>
-                <span className="product-color"></span>
-            </div>
+                    <h5 className="color-heading">Color</h5>
+                    <span className="product-color"></span>
+                </div>
 
             </div>
 

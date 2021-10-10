@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/userActions';
+import {GrClose} from 'react-icons/gr'
 
 const MenuModalStyle = styled.div`
 
@@ -17,6 +18,10 @@ const MenuModalStyle = styled.div`
     background-size: cover;
     display: flex;
     flex-direction: column;
+
+    a:visited, a:link, a:active {
+        color: black;
+    }
 
 
     .user-admin-controls, .user-info, .user-links, .admin-options__list {
@@ -41,14 +46,27 @@ const MenuModalStyle = styled.div`
 
       width: 100%;
       justify-content: space-around;
+      flex-wrap: wrap;
 
       @media screen and (min-width: 756px){
         width: 25%;
+      }
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        width: 33.33%;
       }
     }
   
     .exit-nav {
       padding: 2rem;
+      display: flex;
+      justify-content: flex-end;
+
+      &__button {
+        font-size: 2.2rem;
+      }
     }
   
     .menu-modal__content {
@@ -78,6 +96,10 @@ const MenuModalStyle = styled.div`
         &:not(:last-child) {
           margin-bottom: 1rem;
         }
+
+        @media screen and (min-width: 1200px){
+          font-size: 2vw;
+        }
       }
     }
   
@@ -103,6 +125,8 @@ const MenuModalStyle = styled.div`
       height: 10rem;
       width: 100%;
       background-color: black;
+
+      
     }
 
 `
@@ -116,7 +140,7 @@ const MenuModal = (props) => {
     const signoutHandler = () => {
       dispatch(signout());
     };
-  
+
 
   return (
       <MenuModalStyle className="menu-modal">
@@ -205,7 +229,7 @@ const MenuModal = (props) => {
 
             
             <div className="exit-nav">
-                <a href="#" onClick={props.toggleMenu} className="exit-nav__button">x</a>
+                <a href="#" onClick={props.toggleMenu} className="exit-nav__button"><GrClose/></a>
             </div>
             
             <div className="menu-modal__links">
@@ -213,11 +237,11 @@ const MenuModal = (props) => {
 
                 <h3 className="home-link"><a>/Home</a></h3>
                 <ul className="link-list">
-                    <li className="link-list__item"><a>Collection</a></li>
-                    <li className="link-list__item"><a>Brand</a></li>
-                    <li className="link-list__item"><a>Inspiration</a></li>
-                    <li className="link-list__item"><a>News</a></li>
-                    <li className="link-list__item"><a>Contact</a></li>
+                    <li className="link-list__item"><Link to="/category" onClick={props.toggleMenu}>Collection</Link></li>
+                    <li className="link-list__item"><Link to="/brand" onClick={props.toggleMenu}>Brand</Link></li>
+                    <li className="link-list__item"><Link to="/inspiration" onClick={props.toggleMenu}>Inspiration</Link></li>
+                    <li className="link-list__item"><Link to="/news" onClick={props.toggleMenu}>News</Link></li>
+                    <li className="link-list__item"><Link to="/contact" onClick={props.toggleMenu}>Contact</Link></li>
                 </ul>
 
                 <ul className="hidden-list">

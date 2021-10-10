@@ -1,10 +1,16 @@
 import express from 'express';
+import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 // import data from '../data';
 import News from '../models/newsModel.js';
 import { isAdmin, isAuth } from '../utils.js';
 
 const newsRouter = express.Router();  
+
+newsRouter.get('/seed', expressAsyncHandler(async (req, res) => {
+  const createdNews = await News.insertMany(data.news)
+  res.send({createdNews});
+}));
 
 newsRouter.get('/', async (req, res) => {
   const news = await News.find({});
@@ -22,10 +28,7 @@ newsRouter.get('/:id', async (req, res) => {
   }
 })
  
-newsRouter.get('/seed', async (req, res) => {
-  const createdNews = await News.insertMany(data.news)
-  res.send({createdNews});
-});
+
 
 newsRouter.put("/:id", isAuth, isAdmin, async (req, res) => {
   const newsId = req.params.id;
