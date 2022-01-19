@@ -169,10 +169,9 @@ const ProductDetails = ({props}) => {
     const handleAddToCart = (e) => {
         e.preventDefault()
 
-        props.history.push(`/cart/${productId}?qty=${qty}`);
-
+        // props.history.push(`/cart/${productId}?qty=${qty}`)
         dispatch(addToCart(productId, qty))
-        // props.onAddToCart();
+        props.onAddToCart();
     }
 
 

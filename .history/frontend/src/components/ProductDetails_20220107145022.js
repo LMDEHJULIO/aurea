@@ -169,10 +169,9 @@ const ProductDetails = ({props}) => {
     const handleAddToCart = (e) => {
         e.preventDefault()
 
-        props.history.push(`/cart/${productId}?qty=${qty}`);
-
+        // props.history.push(`/cart/${productId}?qty=${qty}`)
         dispatch(addToCart(productId, qty))
-        // props.onAddToCart();
+        props.onAddToCart();
     }
 
 
@@ -216,20 +215,11 @@ const ProductDetails = ({props}) => {
                 <div>
 
                     <form className="form--add-to-cart">
-                        
+                        <input type="number" id="quantity" min="1" max={product.countInStock} value={qty} onChange={(e)=> setQty(e.target.value)} className="form--add-to-cart__input"/>
 
-                        {product.countInStock > 0 ? (
-                            <>
-
-                                <input type="number" id="quantity" min="1" max={product.countInStock} value={qty} onChange={(e)=> setQty(e.target.value)} className="form--add-to-cart__input"/>
-
-                                <input type="submit" value="Add To Cart" className="btn-add-to-cart" onClick={handleAddToCart}/>
-
-                            </>
-                        )
-                        : 
-                        ( <p>Product not in stock.</p>)
-                    }
+                        {product.countInStock > 0 && (
+                            <input type="submit" value="Add To Cart" className="btn-add-to-cart" onClick={handleAddToCart}/>
+                        )}
                     </form>
                 
                 </div>

@@ -172,7 +172,7 @@ const ProductDetails = ({props}) => {
         props.history.push(`/cart/${productId}?qty=${qty}`);
 
         dispatch(addToCart(productId, qty))
-        // props.onAddToCart();
+        props.onAddToCart();
     }
 
 

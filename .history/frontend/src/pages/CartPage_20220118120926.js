@@ -10,9 +10,11 @@ export default function Cart(props) {
     const { cartItems } = cart;
 
     const productId = props.match.params.id;
-    const qty = props.location.search
-                ? Number(props.location.search.split('=')[1])
-                : 1;
+    const qty = 
+    
+    props.location.search
+    ? Number(props.location.search.split('=')[1])
+    : 1;
 
     const removeFromCartHandler = (id) => {
         // delete action
