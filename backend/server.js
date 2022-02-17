@@ -3,11 +3,12 @@ import mongoose from 'mongoose';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
 import orderRouter from './routers/orderRouter.js';
-import 'dotenv/config';
+// import 'dotenv/config';
+import dotenv from 'dotenv';
 import path from 'path';
 import uploadRouter from './routers/uploadRouter.js';
 import newsRouter from './routers/newsRouter.js';
-// dotenv.config();
+dotenv.config();
 
 const app = express();
 
