@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 
 export default {
-  user: [
+  users: [
     {
       name: 'Julio',
       email: 'julio@admin.com',
