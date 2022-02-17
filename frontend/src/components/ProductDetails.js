@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
-import { addToCart } from '../actions/cartActions';
+import { addToCart, cartToggle } from '../actions/cartActions';
 import { detailsProduct } from '../actions/productActions';
 
 const ProductDetailsStyle = styled.section`
@@ -18,33 +18,25 @@ const ProductDetailsStyle = styled.section`
     }
 
     .product-display__grid {
-    // display: grid;
-    // grid-auto-rows: minmax(10rem, auto);
-    // grid-template-columns: repeat(2, 1fr);
-    // grid-template-areas: "full-1 full-1"
-    //                      "half-1 half-2"
-    //                      "full-2 full-2"
-    //                      "full-2 full-2";
-    // grid-gap: 1.5rem;
 
-    display: grid;
-    height: 170vw;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 2fr 4fr;
-    gap: 15px 15px;
-    grid-template-areas: "full-1 full-1"
-                         "half-1 half-2"
-                         "full-2 full-2"
-                         "full-2 full-2";
+        display: grid;
+        /* height: 170vw; */
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-rows: 2fr 4fr 4fr; */
+        gap: 1.5rem 1.5rem;
+        grid-template-areas: "full-1 full-1"
+                            "half-1 half-2"
+                            "full-2 full-2"
+                            "full-2 full-2";
 
 
-    width: 100%;
-    margin-bottom: 2rem;
+        width: 100%;
+        margin-bottom: 2rem;
 
-    @media screen and (min-width: 1024px){
-        height: 100vh;
-        width: 50%;
-    }
+        @media screen and (min-width: 1024px){
+            /* height: 100vh; */
+            width: 50%;
+        }
     }
 
     .product-display-img{
@@ -52,6 +44,10 @@ const ProductDetailsStyle = styled.section`
         height: 100%;
         object-fit: cover;
         display: block;
+
+        @media screen and (min-width: 1024px) {
+            /* height:425px; */
+        }
 
         &--1 {
             grid-area: full-1;
@@ -92,7 +88,12 @@ const ProductDetailsStyle = styled.section`
 
 
         .product-heading{
-            text-transform: uppercase; 
+            text-transform: uppercase;
+            font-size: 5vw; 
+
+            @media screen and (min-width: 1024px){
+                font-size: 2vw;
+            }
         }
 
         .product__price-desc {
@@ -148,7 +149,21 @@ const ProductDetailsStyle = styled.section`
 
     }
 
+    .btn-add-to-cart { 
+        background-color: black;
+        padding: 1.5rem 3.5rem;
+        border: none;
+        color: white;
+    }
 
+    .form--add-to-cart {
+        input[type=number] {
+            padding: 1.5rem;
+            background-color: #eaeaea;
+            border: none;
+            margin-right: 1rem;
+        }
+    }
 
 `
 
@@ -167,12 +182,12 @@ const ProductDetails = ({props}) => {
     }, [dispatch, productId]);
 
     const handleAddToCart = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        props.history.push(`/cart/${productId}?qty=${qty}`);
+        dispatch(addToCart(productId, qty));
+        dispatch(cartToggle());
 
-        dispatch(addToCart(productId, qty))
-        // props.onAddToCart();
+
     }
 
 
@@ -182,10 +197,10 @@ const ProductDetails = ({props}) => {
 
         <ProductDetailsStyle className="product-display">
         <div className="product-display__grid">
-            <img src={product.image} className="product-display-img product-display-img--1"/>
-            <img src={product.image}  className="product-display-img product-display-img--2"/>
-            <img src={product.image}  className="product-display-img product-display-img--3"/>
-            <img src={product.image}  className="product-display-img product-display-img--4"/>
+            <img src={product.image} sizes="(max-width: 479px) 92vw, (max-width: 767px) 84vw, (max-width: 991px) 96vw, 54vw" className="product-display-img product-display-img--1"/>
+            <img src={product.image}  sizes="(max-width: 479px) 92vw, (max-width: 767px) 84vw, (max-width: 991px) 96vw, 54vw" className="product-display-img product-display-img--2"/>
+            <img src={product.image}  sizes="(max-width: 479px) 92vw, (max-width: 767px) 84vw, (max-width: 991px) 96vw, 54vw" className="product-display-img product-display-img--3"/>
+            <img src={product.image}  sizes="(max-width: 479px) 92vw, (max-width: 767px) 84vw, (max-width: 991px) 96vw, 54vw" className="product-display-img product-display-img--4"/>
         </div>
 
         <div className="product-display__details">
@@ -221,7 +236,7 @@ const ProductDetails = ({props}) => {
                         {product.countInStock > 0 ? (
                             <>
 
-                                <input type="number" id="quantity" min="1" max={product.countInStock} value={qty} onChange={(e)=> setQty(e.target.value)} className="form--add-to-cart__input"/>
+                                <input type="number" id="quantity" min="1" inputMode="numeric" max={product.countInStock} value={qty} onChange={(e)=> setQty(e.target.value)} className="form--add-to-cart__input"/>
 
                                 <input type="submit" value="Add To Cart" className="btn-add-to-cart" onClick={handleAddToCart}/>
 

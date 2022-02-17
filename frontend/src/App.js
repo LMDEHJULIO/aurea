@@ -1,15 +1,14 @@
-import React from 'react';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Cart from './pages/CartPage.js';
 import SigninScreen from './pages/SigninPage';
 import { signout } from './actions/userActions';
 import RegisterPage from './pages/RegisterPage';
-import ShippingAddressPage from './pages/ShippingAddressPage';
 import PaymentMethodPage from './pages/PaymentMethodPage';
 import PlaceOrderPage from './pages/PlaceOrderPage';
-import OrderScreen from './pages/OrderScreen';
+import OrderPage from './pages/OrderPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import ProfilePage from './pages/ProfilePage';
 import PrivateRoute from './pages/PrivateRoute';
@@ -32,17 +31,101 @@ import CartBtn from './components/CartBtn.js';
 
 // import Footer from './Footer';
 
+const GlobalApplicationStyle = styled.div`
+
+
+
+body {
+   font-family: 'IBM Plex Sans', 'sans-serif';
+   /* font-size: 1.6rem; */
+ }
+
+ /* *,
+ *::after,
+ *::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+ } */
+
+
+
+ position: relative;
+ 
+   /* padding-top: 8.5rem; */
+   display: grid;
+   /* grid-template-columns: 10rem 1fr; // testing */
+   grid-template-areas:
+     'nav'
+     'main'
+     'footer';
+   grid-template-columns: 1fr;
+   grid-template-rows: 7rem auto auto;
+
+   nav {
+     grid-area: nav;
+   }
+
+   main {
+     grid-area: main;
+     min-height: 100vh;  
+     /* display: flex;
+     justify-content: center;
+     align-items: center; */
+   }
+
+   footer {
+     grid-area: footer;
+   }
+
+
+   @media screen and (min-width: 991px) {
+     flex-grow: 1;
+     grid-template-columns: 10rem 1fr;
+     grid-template-rows: auto;
+
+     main {
+
+       grid-column: 2/3;
+       /* max-width: 2400px; */
+       
+
+
+       @media screen and (min-width: 2000px) {
+         /* margin: 0 auto; */
+       }
+     }
+
+     footer {
+       grid-column: 2/3
+     }
+   } 
+   
+  
+
+`
+
 function App() {
 
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  // const { cartItems } = cart;
+
+  
+  const [cartVisible, setCartVisible] = useState(false);
+
+  const toggleCart = () => {
+    setCartVisible(!cartVisible);
+    console.log('Cart')
+  }
+
 
   const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
-  const dispatch = useDispatch();
-  const signoutHandler = () => {
-    dispatch(signout());
-  };
+  // const { userInfo } = userSignin;
+  // const dispatch = useDispatch();
+
+  // const signoutHandler = () => {
+  //   dispatch(signout());
+  // };
 
   const breakpoints = {
     mobileS: '320px',
@@ -64,69 +147,6 @@ function App() {
     desktop: `(min-width: ${breakpoints.desktop})`,
     desktopL: `(min-width: ${breakpoints.desktop})`
   };
-
-  const GlobalApplicationStyle = styled.div`
-
-
-
-   /* body {
-      font-family: 'IBM Plex Sans', 'sans-serif';
-    } */
-
-    h1, h2, h3, h4, p, a, li, table{
-      font-family: 'IBM Plex Sans', 'sans-serif';
-    }
-
-    position: relative;
-    
-      /* padding-top: 8.5rem; */
-      display: grid;
-      /* grid-template-columns: 10rem 1fr; // testing */
-      grid-template-areas:
-        'nav'
-        'main'
-        'footer';
-      grid-template-columns: 1fr;
-      grid-template-rows: 7rem auto auto;
-
-      nav {
-        grid-area: nav;
-      }
-
-      main {
-        grid-area: main;
-      }
-
-      footer {
-        grid-area: footer;
-      }
-
-
-      @media screen and (min-width: 991px) {
-        flex-grow: 1;
-        grid-template-columns: 10rem 1fr;
-        grid-template-rows: auto;
-
-        main {
-
-          grid-column: 2/3;
-          /* max-width: 2400px; */
-          min-height: 1800px;
-
-
-          @media screen and (min-width: 2000px) {
-            /* margin: 0 auto; */
-          }
-        }
-
-        footer {
-          grid-column: 2/3
-        }
-      } 
-      
-     
-
-  `
   
   return (
     <BrowserRouter>
@@ -134,7 +154,7 @@ function App() {
 
         <Nav/>
 
-        <CartBtn/>
+        <CartBtn cartVisible={cartVisible} setCartVisible={setCartVisible} toggleCart={toggleCart}/>
 
         <main>
           <Route path="/signin" component={SigninScreen}></Route>
@@ -142,10 +162,9 @@ function App() {
           <Route path="/product/:id" component={ProductPage} exact></Route>
           <Route path="/" component={HomePage} exact></Route>
           <Route path="/register" component={RegisterPage}></Route>
-          <Route path="/shipping" component={ShippingAddressPage}></Route>
           <Route path="/payment" component={PaymentMethodPage}></Route>
           <Route path="/placeorder" component={PlaceOrderPage}></Route>
-          <Route path="/order/:id" component={OrderScreen}></Route>
+          <Route path="/order/:id" component={OrderPage}></Route>
           <Route path="/orderhistory" component={OrderHistoryPage}></Route>
 
           <Route

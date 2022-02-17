@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
+import {FaFacebookSquare,
+FaInstagram,
+FaTwitter} from 'react-icons/fa'
 
 const FooterStyle = styled.footer`
 
@@ -13,7 +16,6 @@ const FooterStyle = styled.footer`
     }
   
     .credit-box {
-      margin-bottom: 2rem;
   
       p:not(:last-child){
         margin-bottom: .5rem;
@@ -22,14 +24,24 @@ const FooterStyle = styled.footer`
   
     .icons-container {
       display: flex;
-      margin-bottom: 2rem;
+      justify-content: center;
     }
   
     .social-icons {
-      border: solid 1px grey;
-      width: 2rem;
-      height: 2rem;
-      margin-right: 1rem;
+      border: solid 1px #2c2c2c;
+      padding: 1rem;
+
+        &:not(:last-child){
+          margin-right: 2rem;
+        }
+      }
+    
+      
+
+      svg {
+        fill: white;
+        font-size: 2rem;
+      }
     }
   
     .upper-footer{
@@ -44,12 +56,21 @@ const FooterStyle = styled.footer`
       align-items: center;
       padding: 1rem;
       min-height: 25rem;
+
+      .footer-content {
+
+        @media screen and (min-width: 1024px){
+          width: 33.33%;
+        }
+        
+      }
   
       &__content {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+        gap: 2rem;
   
         @media screen and (min-width: 1024px){
           width: 100%;
@@ -60,31 +81,46 @@ const FooterStyle = styled.footer`
     }
   
     .lower-footer {
-      display: flex;
-      flex-direction: column;
-      flex: 4;
+
       background-color: black;
       padding: 4rem;
+
   
-      @media screen and (min-width: 768px){
-        flex-direction: row;
-        justify-content: space-evenly;
+  
+        .footer-nav-links {
+          display: flex;
+          flex-direction: column;
+          flex: 4;
+          margin: 0 auto;
+     
+  
+          @media screen and (min-width: 768px){
+            flex-direction: row;
+            justify-content: space-evenly;
+          }
+
+          @media screen and (min-width: 982px){
+            width: 75%;
+          }
+
+          @media screen and (min-width: 1500px){
+            width: 50%;
+          }
+
+          .footer-nav-link {
+            color: #848383;
+            list-style: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 500;
+          
+            &:not(:last-child){
+              margin-bottom: 2rem;
+            }
+          }
       }
-  
-  
-      
-      li {
-        color: #848383;
-        list-style: none;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 1.2rem;
-        font-weight: 500;
-      
-        &:not(:last-child){
-          margin-bottom: 2rem;
-        }
-      }
+
     }
 `
 
@@ -97,29 +133,32 @@ const Footer = () => {
       <img src={`${process.env.PUBLIC_URL}/assets/img/aurea-logo-white.svg`}></img>
       
       <div className="upper-footer__content">
-        <div className="credit-box">
+        <div className="credit-box footer-content">
           <p>Developed by <span>Julio Rodriguez</span></p>
           <p>Designed by <span>Udesly</span></p>
         </div>
       
-        <div class="icons-container">
-          <div className="social-icons"></div>
-          <div className="social-icons"></div>
-          <div className="social-icons"></div>
+        <div className="icons-container footer-content">
+          <div className="social-icons"><FaFacebookSquare/></div>
+          <div className="social-icons"><FaInstagram/></div>
+          <div className="social-icons"><FaTwitter/></div>
         </div>
 
-        <div>@COPYRIGHT 2020 - UDESLYl.COM</div>
+        <div className="copyright footer-content">@COPYRIGHT 2020 - UDESLYl.COM</div>
       </div>
 
     </div>
     <div className="lower-footer">
-      <li>News</li>
-      <li>Contact</li>
-      <li>Brand</li>
-      <li>Licensing</li>
-      <li>Privacy Policy</li>
-      <li>Terms and Conditions</li>
-      <li>Style Guide</li>
+      <ul className='footer-nav-links'>
+        <li className='footer-nav-link'>News</li>
+        <li className='footer-nav-link'>Contact</li>
+        <li className='footer-nav-link'>Brand</li>
+        <li className='footer-nav-link'>Licensing</li>
+        <li className='footer-nav-link'>Privacy Policy</li>
+        <li className='footer-nav-link'>Terms and Conditions</li>
+        <li className='footer-nav-link'>Style Guide</li>
+      </ul>
+
     </div>
   </FooterStyle>
   )

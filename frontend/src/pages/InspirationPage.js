@@ -84,11 +84,11 @@ const InspirationPage = () => {
             <div className="inspiration-content">
                 <div className="inspiration-col inspiration-col-1">
                     
-                    {inspirationgData.slice(0, 4).map((card) => <InspirationCard cardData={card} className="inspiration-card"/>)}
+                    {inspirationgData.slice(0, 4).map((card, index) => <InspirationCard cardData={card} key={index} className="inspiration-card"/>)}
                 </div>
 
                 <div className="inspiration-col inspiration-col-2">
-                    {inspirationgData.slice(4,8).map((card) => <InspirationCard cardData={card} className="inspiration-card"/>)}
+                    {inspirationgData.slice(4,8).map((card, index) => <InspirationCard cardData={card} key={index} className="inspiration-card"/>)}
                 </div>
             </div>
 

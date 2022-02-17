@@ -10,8 +10,11 @@ import {
   ORDER_DELIVER_RESET,
   ORDER_PAY_RESET,
 } from '../constants/orderConstants';
+import { CartPageStyle, SectionStyle, CartPageItem } from '../components/styles/CartPage';
+import {OrderPageStyle, OrderPageSection} from '../components/styles/OrderPage'
 
-export default function OrderScreen(props) {
+
+export default function OrderPage(props) {
   const orderId = props.match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);
@@ -20,18 +23,23 @@ export default function OrderScreen(props) {
   const { userInfo } = userSignin;
 
   const orderPay = useSelector((state) => state.orderPay);
+
   const {
     loading: loadingPay,
     error: errorPay,
     success: successPay,
   } = orderPay;
+
   const orderDeliver = useSelector((state) => state.orderDeliver);
+
   const {
     loading: loadingDeliver,
     error: errorDeliver,
     success: successDeliver,
   } = orderDeliver;
+
   const dispatch = useDispatch();
+  
   useEffect(() => {
     const addPayPalScript = async () => {
       const { data } = await Axios.get('/api/config/paypal');
@@ -76,13 +84,15 @@ export default function OrderScreen(props) {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
-      <h1>Order {order._id}</h1>
-      <div className="row top">
-        <div className="col-2">
-          <ul>
-            <li>
-              <div className="card card-body">
+    <OrderPageStyle>
+
+      <h1 className='main-heading'>Order {order._id}</h1>
+
+      <div className="">
+        <div className="">
+     
+
+              <OrderPageSection className="">
                 <h2>Shipping</h2>
                 <p>
                   <strong>Name:</strong> {order.shippingAddress.fullName} <br />
@@ -92,86 +102,93 @@ export default function OrderScreen(props) {
                   {order.shippingAddress.country}
                 </p>
                 {order.isDelivered ? (
-                  <MessageBox variant="success">
+                  <p className="order-status">
                     Delivered at {order.deliveredAt}
-                  </MessageBox>
+                  </p>
                 ) : (
-                  <MessageBox variant="danger">Not Delivered</MessageBox>
+                  <p className="order-status">Not Delivered</p>
                 )}
-              </div>
-            </li>
-            <li>
-              <div className="card card-body">
+            </OrderPageSection>
+
+   
+              <OrderPageSection className="">
                 <h2>Payment</h2>
                 <p>
                   <strong>Method:</strong> {order.paymentMethod}
                 </p>
                 {order.isPaid ? (
-                  <MessageBox variant="success">
+                  <p className="order-status">
                     Paid at {order.paidAt}
-                  </MessageBox>
+                  </p>
                 ) : (
-                  <MessageBox variant="danger">Not Paid</MessageBox>
+                  <p className="order-status">Not Paid</p>
                 )}
-              </div>
-            </li>
-            <li>
-              <div className="card card-body">
+              </OrderPageSection>
+      
+              <OrderPageSection className="">
                 <h2>Order Items</h2>
+
                 <ul>
                   {order.orderItems.map((item) => (
                     <li key={item.product}>
-                      <div className="row">
-                        <div>
+                      <div  className="order-item">
+                     
                           <img
                             src={item.image}
                             alt={item.name}
-                            className="small"
+                            className="order-item__image"
                           ></img>
-                        </div>
-                        <div className="min-30">
+                        
+                        <div>
+                       
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
-                        </div>
+                      
 
-                        <div>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          <p>
+                            {item.qty} x ${item.price} = ${item.qty * item.price}
+                          </p>
+                          
                         </div>
                       </div>
                     </li>
                   ))}
                 </ul>
-              </div>
-            </li>
-          </ul>
+              </OrderPageSection>
+           
+        
         </div>
-        <div className="col-1">
-          <div className="card card-body">
+
+        
+          <OrderPageSection className="">
+
+            <h2>Order Summary</h2>
             <ul>
+
               <li>
-                <h2>Order Summary</h2>
-              </li>
-              <li>
-                <div className="row">
-                  <div>Items</div>
-                  <div>${order.itemsPrice.toFixed(2)}</div>
+                <div className="order-qty">
+                  <h4>Items</h4>
+                  <p>${order.itemsPrice.toFixed(2)}</p>
                 </div>
               </li>
+
               <li>
-                <div className="row">
-                  <div>Shipping</div>
+                <div className="order-qty">
+                  <h4>Shipping</h4>
                   <div>${order.shippingPrice.toFixed(2)}</div>
                 </div>
               </li>
+
               <li>
-                <div className="row">
-                  <div>Tax</div>
+                <div className="order-qty">
+                  <h4>Tax</h4>
                   <div>${order.taxPrice.toFixed(2)}</div>
                 </div>
               </li>
+
               <li>
-                <div className="row">
+                <div className="order-total">
                   <div>
                     <strong> Order Total</strong>
                   </div>
@@ -180,6 +197,8 @@ export default function OrderScreen(props) {
                   </div>
                 </div>
               </li>
+
+
               {!order.isPaid && (
                 <li>
                   {!sdkReady ? (
@@ -199,6 +218,7 @@ export default function OrderScreen(props) {
                   )}
                 </li>
               )}
+
               {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                 <li>
                   {loadingDeliver && <Loading></Loading>}
@@ -207,7 +227,7 @@ export default function OrderScreen(props) {
                   )}
                   <button
                     type="button"
-                    className="primary block"
+                    className=""
                     onClick={deliverHandler}
                   >
                     Deliver Order
@@ -215,9 +235,9 @@ export default function OrderScreen(props) {
                 </li>
               )}
             </ul>
-          </div>
-        </div>
+          </OrderPageSection>
+        
       </div>
-    </div>
+    </OrderPageStyle>
   );
 }

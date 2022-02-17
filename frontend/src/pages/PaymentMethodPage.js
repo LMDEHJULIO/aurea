@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
+import {FaPaypal} from "react-icons/fa"
 
 export default function PaymentMethodPage(props) {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
-  if (!shippingAddress.address) {
-    props.history.push('/shipping');
-  }
+
+  // if (!shippingAddress.address) {
+  //   props.history.push('/shipping');
+  // }
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
   const dispatch = useDispatch();
+
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod));
-    props.history.push('/placeorder');
   };
+  useEffect(()=> {
+    dispatch(savePaymentMethod('PayPal'))
+  },[])
   return (
-    <div>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
+          <div>
+
+            <FaPaypal/>
+
+            <p>Checkout will be managed via PayPal.</p>
+            <p>Don't have an account? Just checkout with your credit card when prompted.</p>
+          </div>
+
+      /* <form className="form" onBlur={submitHandler}>
         <div>
           <h1>Payment Method</h1>
         </div>
@@ -33,11 +45,13 @@ export default function PaymentMethodPage(props) {
               required
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
-            ></input>
-            <label htmlFor="paypal">PayPal</label>
+            ></input> 
+            <label htmlFor="paypal" className='paypal-checkout'><FaPaypal/></label>
+            <p>Checkout will be managed via PayPal.</p>
+            <p>Don't have an account? Just checkout with your credit card when prompted.</p>
           </div>
         </div>
-        <div>
+         <div>
           <div>
             <input
               type="radio"
@@ -49,14 +63,8 @@ export default function PaymentMethodPage(props) {
             ></input>
             <label htmlFor="stripe">Stripe</label>
           </div>
-        </div>
-        <div>
-          <label />
-          <button className="primary" type="submit">
-            Continue
-          </button>
-        </div>
-      </form>
-    </div>
+        </div> 
+      </form> */
+    
   );
 }

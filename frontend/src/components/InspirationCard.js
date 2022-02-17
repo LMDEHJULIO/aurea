@@ -13,12 +13,18 @@ const InspirationCardStyle = styled.div`
       height: 44rem;
     } */
 
+
+
     .inspiration-body {
         height: 45rem;
         width: 100%;
         background-color: black;
         background-image: url('${(props) => props.bgImg}');
         background-size: cover;
+        transition: transform .5s;
+        :hover {
+            transform: scale(.95);
+        }
 
         @media screen and (min-width: 768px){
             height: 48rem;
@@ -39,6 +45,8 @@ const InspirationCardStyle = styled.div`
         padding: 5rem;
         font-size: 2.3rem;
         margin-top: -10rem;
+        position: relative;
+        z-index:1;
 
         .inspiration-card__heading {
             display: flex;

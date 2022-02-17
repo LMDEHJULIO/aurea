@@ -84,7 +84,7 @@ const FullBumperStyle = styled.div`
 
 const FullWidthBumper = (props) => {
   return (
-    <FullBumperStyle class="img-bumper">
+    <FullBumperStyle className="img-bumper">
         <h3>Sed ultrices leo sed diam</h3>
 
         <div className="img-bumper__cta">

@@ -187,7 +187,7 @@ const BrandPage = () => {
 
             <section className="img-bumper">
                 <img src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5d1b079aca_megamenu.jpg" 
-                srcset="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5d1b079aca_megamenu-p-500.jpeg 500w, 
+                srcSet="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5d1b079aca_megamenu-p-500.jpeg 500w, 
                 https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5d1b079aca_megamenu-p-1080.jpeg 1080w, 
                 https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5d1b079aca_megamenu-p-1600.jpeg 1600w, 
                 https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab5d1b079aca_megamenu.jpg 2000w" 
@@ -216,9 +216,9 @@ const BrandPage = () => {
 
                 {
                     teamData.map((member,index) => (
-                        <div className={`team-image-${index + 1} team-image`}>
+                        <div className={`team-image-${index + 1} team-image`} key={index}>
                             <img src={`${member.image}.jpg`}
-                            srcset={`${member.image}-p-500.jpeg 500w, 
+                            srcSet={`${member.image}-p-500.jpeg 500w, 
                             ${member.image}-p-800.jpeg 800w, 
                             ${member.image}.jpg 1000w` }
                             sizes="(max-width: 991px) 85vw, (max-width: 1298px) 77vw, 1000px" 

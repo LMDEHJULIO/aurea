@@ -14,6 +14,8 @@ const ProductPageStyle = styled.div`
     display: grid;
     grid-template-columns: 5rem auto 5rem;
     max-width: 2500px;
+    padding-top: 5rem;
+    grid-row-gap: 5rem;
 
     @media screen and (min-width: 2500px){
         margin: 0 auto;
@@ -35,7 +37,26 @@ const ProductPageStyle = styled.div`
         padding: 0 2rem;
     } */
 
+    .details-section, .reviews-section{
+        h2{
+            font-size: 3rem;
+            letter-spacing: 0.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+
+    .reviews-section {
+        .reviews {
+            @media screen and (min-width: 1024px){
+                width: 75%;
+            }
+        }
+    }
+
+
     .details-section {
+        
 
 
         
@@ -71,6 +92,10 @@ const ProductPageStyle = styled.div`
         flex-direction: column;
         justify-content: space-between;
         height: 28rem;
+
+        p {
+            line-height: 3rem;
+        }
     }
 
     .cards {
@@ -135,12 +160,17 @@ const ProductPageStyle = styled.div`
 
             @media screen and (min-width: 768px){
                 flex-direction: row;
+                flex-wrap: wrap;
             }
             .product-tile {
 
                 width: 100%;
 
                 @media screen and (min-width: 768px){
+                    width: 50%;
+                }
+
+                @media screen and (min-width: 1200px){
                     width: 25%;
                 }
                 
@@ -228,7 +258,7 @@ const ProductPage = (props) => {
             <ProductReviews/>
 
             <section className="other-products-section">
-                <div class="other-products-container">
+                <div className="other-products-container">
 
                     {
                         products.slice(0,4).map(product => (

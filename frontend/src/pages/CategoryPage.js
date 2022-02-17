@@ -52,9 +52,7 @@ const CategoryPage = (props) => {
 
     useEffect(() => {
         dispatch(listProducts());
-    }, []);
-
-    const counterArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    }, [dispatch]);
 
     return (
         loading ? <div>Loading ...</div> : 
@@ -65,7 +63,7 @@ const CategoryPage = (props) => {
                 {
                     products.map(product => {
                         return (
-                            <ProductTile product={product} className="product-tile"/>
+                            <ProductTile product={product} className="product-tile" key={product._id}/>
                         )
                     })
                 }

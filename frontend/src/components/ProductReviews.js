@@ -5,6 +5,7 @@ import {IoMdStar} from 'react-icons/io'
 const ProductReviewStyle = styled.section`
 
     background-color: white;
+    padding: 10rem 2rem;
 
     @media screen and (min-width: 1024px){
         display: flex;
@@ -20,7 +21,6 @@ const ProductReviewStyle = styled.section`
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 1.5rem;
-    padding: 2rem;
 }
 
 .reviewer-identity{
@@ -41,7 +41,7 @@ const ProductReviewStyle = styled.section`
 const ReviewStars = ({count}) => {
 
     return (
-        [...Array(count)].map(star => <IoMdStar/>)
+        [...Array(count)].map((star, index) => <IoMdStar key={index}/>)
     )
 }
 

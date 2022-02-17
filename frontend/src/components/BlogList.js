@@ -38,7 +38,7 @@ const BlogList = ({children}) => {
 
     return (
         <BlogListStyle>
-          {news.filter((i,index) => index < 3).map((blog) => <BlogCard blogText={blog}/>)}
+          {news.filter((i,index) => index < 3).map((blog) => <BlogCard blogText={blog} key={blog._id}/>)}
         </BlogListStyle>
     )
 }

@@ -15,7 +15,7 @@ const NavStyle = styled.nav`
     background-color: white;
     position: fixed;
     width: 100vw;
-    z-index: 999;
+    z-index: 9999;
   
     @media screen and (min-width: 767px) {
       height: 8rem;
@@ -36,7 +36,7 @@ const NavStyle = styled.nav`
 
 .nav-logo__link {
 
-  @media screen and (min-width: 1024px){
+  @media screen and (min-width: 991px){
     transform: rotate(-90deg);
   }
 

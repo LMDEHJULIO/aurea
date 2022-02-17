@@ -105,10 +105,10 @@ const ProductTile = ({product, className}) => {
 
               <h3 className="details-overlay__price">${product.price}</h3>
 
-              <div className="title-box__cta">
-                <a className="title-box__cta-arrow"><img src={`${process.env.PUBLIC_URL}/assets/img/product-link-arrow.svg`}/></a>
-                <a className="title-box__cta-link title-box__item">View More</a> 
-              </div>
+              <Link to="news" className="title-box__cta" to={`${product._id}`}>
+                <div className="title-box__cta-arrow"><img src={`${process.env.PUBLIC_URL}/assets/img/product-link-arrow.svg`}/></div>
+                <span className="title-box__cta-link title-box__item" to="/news">View More</span> 
+              </Link>
             </div>
 
               {/* <Link to={`product/${product._id}`}>View More</Link> */}

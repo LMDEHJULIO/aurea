@@ -144,8 +144,9 @@ const MenuModal = (props) => {
 
   return (
       <MenuModalStyle className="menu-modal">
+        <div className="menu-modal__content">
 
-{userInfo && (
+        {userInfo && (
               <div className="user-admin-controls">
                 <Link to="#">
                   {userInfo.name}
@@ -215,7 +216,7 @@ const MenuModal = (props) => {
             ) 
             }
               
-          <div className="menu-modal__content">
+          
  
           
             {/* <Link to="/cart">

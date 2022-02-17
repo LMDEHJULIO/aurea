@@ -72,7 +72,7 @@ const NewsPage = () => {
     
             <div className="inspiration-content">
                 
-                    {news.map((blog) => <BlogCard blogText={blog} className="blog-card"/>)}
+                    {news.map((blog, index) => <BlogCard blogText={blog} key={index} className="blog-card"/>)}
               
             </div>
         </NewsPageStyle>

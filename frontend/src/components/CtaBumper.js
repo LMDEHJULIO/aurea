@@ -44,8 +44,6 @@ const CtaBumperStyle = styled.div`
     justify-content: flex-end;
     width: 100%;
     min-height: 20rem;
-    /* ${(props) => props.type === 'furniture' && `background-image: url("../../assets/img/bedding.jpg");`};
-    ${(props) => props.type === 'objects' && `background-image: url("../../assets/img/kitchen.jpg");`}; */
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -53,7 +51,6 @@ const CtaBumperStyle = styled.div`
   .bumper__content {
     padding: 2rem;
     background-color: white;
-    /* height: 22rem; */
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
@@ -125,15 +122,14 @@ const CtaBumperStyle = styled.div`
 
   .slide {
     opacity: 0;
-    transition-duration: 1s ease;
+    transition: 1s ease;
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     display: none;
     
       &.active {
         opacity: 1; 
-        transition-duration: 1s;
-        position: relative;
+        /* position: relative; */
         display: block;
       }
     }
@@ -199,7 +195,7 @@ const CtaBumperStyle = styled.div`
     .bumper__content {
       grid-column: 2;
       justify-self: center;
-      margin-top: -10%;
+      /* margin-top: -10%; */
 
       p {
         margin: 2rem 0;
@@ -256,33 +252,26 @@ const CtaBumper = ({slides, type, textData, isSlider}) => {
           <h4 className="bumper-label__text"><span>Lorem</span> / Ipsum Dolor Sit Amet</h4>
         </div>
 
-
+        <div className='bumper-image__container'>
           {
             type === 'furniture' &&
-            <img className="bumper-image" src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10.jpg" sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcset="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10-p-800.jpeg 800w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10-p-1600.jpeg 1600w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10.jpg 1750w" alt=""/>
+            <img className="bumper-image" src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10.jpg" sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcSet="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10-p-800.jpeg 800w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10-p-1600.jpeg 1600w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab3176079a9b_image10.jpg 1750w" alt=""/>
           }
 
           {
             type === 'objects' &&
-            <img className="bumper-image" src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8.jpg" sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcset="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8-p-500.jpeg 500w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8-p-800.jpeg 800w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8-p-1600.jpeg 1600w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8.jpg 1750w" alt="" />
+            <img className="bumper-image" src="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8.jpg" sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcSet="https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8-p-500.jpeg 500w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8-p-800.jpeg 800w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8-p-1600.jpeg 1600w, https://assets.website-files.com/5e7a1f9f5d22ab1757079a58/5e7a1f9f5d22ab81be079a9c_image8.jpg 1750w" alt="" />
           }
 
           {isSlider &&
           
-              slides?.map((slide, index) => {
-                return (
-                    <div className={index === current ? "slide active bumper-image" : "slide bumper-image"} key = {index}>
-
-                        {index === current && (
-                            // <img src={slide.image} alt="furniture" className="image"/>  
-
-                            <img src={slide.image} sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcSet={`${slide.image}-p-500.jpeg 500w, ${slide.image}-p-800.jpeg 800w, ${slide.image}-p-1600.jpeg 1600w, ${slide.image}.jpg 1750w`} alt="" className="bumper-image"/>
-                        )}
-                        
+         
+                    <div className="slide active bumper-image" >
+                            <img src={slides[current].image} sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcSet={`${slides[current].image}.jpg 1750w`} alt="" className="bumper-image"/>
                     </div>
-                )
-            })
-          }
+            }
+          </div>
+
 
 
         <div className="bumper__content bumper__content--furniture">
@@ -297,8 +286,8 @@ const CtaBumper = ({slides, type, textData, isSlider}) => {
           isSlider && 
 
           <div className="arrow-container">
-          <IoIosArrowBack className="arrow arrow--left" onClick={prevSlide}/>
-          <IoIosArrowForward className="arrow arrow--right"  onClick={nextSlide}/>
+            <IoIosArrowBack className="arrow arrow--left" onClick={prevSlide}/>
+            <IoIosArrowForward className="arrow arrow--right"  onClick={nextSlide}/>
           </div>
         }
 

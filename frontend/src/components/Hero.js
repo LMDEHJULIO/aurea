@@ -1,4 +1,5 @@
 import React, { Children, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { SliderData } from './SliderData';
 
@@ -10,7 +11,7 @@ const HeroSliderStyle = styled.div`
     background-position: center;
     height: 100%;
     padding: 11rem 4rem 3rem 4rem;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
     transition: background 1s;
     background-repeat: no-repeat;
   
@@ -142,16 +143,18 @@ const Hero = () => {
               {SliderData[current].subHeader}
           </h2>
           
-          <div className="title-box__cta">
-            <a className="title-box__cta-arrow"><img src={`${process.env.PUBLIC_URL}/assets/img/product-link-arrow.svg`}/></a>
-            <a className="title-box__cta-link title-box__item">View More</a> 
-          </div>
+     
+            <Link to="news" className="title-box__cta">
+              <div className="title-box__cta-arrow"><img src={`${process.env.PUBLIC_URL}/assets/img/product-link-arrow.svg`}/></div>
+              <span className="title-box__cta-link title-box__item" to="/news">View More</span> 
+            </Link>
+   
         </div>
 
-        <div class="slider-links">
-          <a href="#" class="slider-dots" onClick={() => setCurrent(0) }></a>
-          <a href="#" class="slider-dots" onClick={() => setCurrent(1)}></a>
-          <a href="#" class="slider-dots" onClick={() => setCurrent(2)}></a>
+        <div className="slider-links">
+          <a href="#" className="slider-dots" onClick={() => setCurrent(0) }></a>
+          <a href="#" className="slider-dots" onClick={() => setCurrent(1)}></a>
+          <a href="#" className="slider-dots" onClick={() => setCurrent(2)}></a>
         </div>
 
     </HeroSliderStyle>

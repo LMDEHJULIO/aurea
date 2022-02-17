@@ -15,14 +15,33 @@ html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   box-sizing: border-box;
 }
+
 body {
+  background-color: var(--main-bg-color);
+  font-size: 1.6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'IBM Plex Sans', 'sans-serif';
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+/* 
+h1, h2, h3, h4, p, a, li, table{
+  font-family: 'IBM Plex Sans', 'sans-serif';
+} */
+
+
+/* body {
   margin: 0;
   height: 100vh;
   font-size: 1.6rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--main-bg-color);
-}
+} */
 /* #root {
   height: 100%;
 } */
@@ -45,10 +64,7 @@ body {
 
 a {
   text-decoration: none;
-}
-a:hover {
-  color: #ff8000;
-}
+} 
 ul {
   padding: 0;
   margin: 0;

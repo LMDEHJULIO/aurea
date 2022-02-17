@@ -16,6 +16,7 @@ const initialState = {
         ? JSON.parse(localStorage.getItem('shippingAddress'))
         : {},
       paymentMethod: 'PayPal',
+      cartVisible: false
     },
     userSignin: {
       userInfo: localStorage.getItem('userInfo')
