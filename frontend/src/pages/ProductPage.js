@@ -12,10 +12,14 @@ import ProductReviews from '../components/ProductReviews';
 const ProductPageStyle = styled.div`
 
     display: grid;
-    grid-template-columns: 5rem auto 5rem;
+    grid-template-columns: 2rem auto 2rem;
     max-width: 2500px;
     padding-top: 5rem;
     grid-row-gap: 5rem;
+
+    @media screen and (min-width: 745px){
+        grid-template-columns: 5rem auto 5rem;
+    }
 
     @media screen and (min-width: 2500px){
         margin: 0 auto;

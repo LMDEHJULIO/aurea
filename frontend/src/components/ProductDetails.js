@@ -127,7 +127,7 @@ const ProductDetailsStyle = styled.section`
         .product-display__cta {
             background-color: white;
             min-height: 22rem;
-            padding: 3.5rem;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -157,6 +157,8 @@ const ProductDetailsStyle = styled.section`
     }
 
     .form--add-to-cart {
+        display: flex;
+        
         input[type=number] {
             padding: 1.5rem;
             background-color: #eaeaea;

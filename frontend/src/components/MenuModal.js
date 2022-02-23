@@ -13,7 +13,7 @@ const MenuModalStyle = styled.div`
     width: 100vw;
     height: 100vh;
     position: fixed; 
-    z-index: 999;
+    z-index: 9999;
     background-image: url(../../assets/img/menu-background.jpg);
     background-size: cover;
     display: flex;
@@ -129,6 +129,18 @@ const MenuModalStyle = styled.div`
       
     }
 
+    .sign-in-link {
+      position: relative;
+      top: 2%;
+      left: 1%;
+
+      span{
+        margin-left: 1rem;
+        color: cadetblue;
+        
+      }
+    }
+
 `
 const MenuModal = (props) => {
     const cart = useSelector((state) => state.cart);
@@ -146,42 +158,12 @@ const MenuModal = (props) => {
       <MenuModalStyle className="menu-modal">
         <div className="menu-modal__content">
 
-        {userInfo && (
-              <div className="user-admin-controls">
-                <Link to="#">
-                  {userInfo.name}
-                </Link>
-
-                
-                
-                <ul className="user-links">
-
-                  <li>
-                    <Link to="/profile">User Profile</Link>
-                  </li>
-
-                  <li>
-                    <Link to="/orderhistory">Order History</Link>
-                  </li>
-                  
-                  <li>
-                    <Link to="#signout" onClick={signoutHandler}>
-                      Sign Out
-                    </Link>
-                  </li> 
-                </ul>
-              </div>
-            ) 
+          {
             
-            ||
-            
-            userInfo && userInfo.isAdmin ? (
+            userInfo && (
          
 
               <div className="user-admin-controls">
-
-
-              
               
                 <ul className="user-links">
 
@@ -199,20 +181,26 @@ const MenuModal = (props) => {
                     </Link>
                   </li>
 
-                  <li>
-                    <Link to="/productlist">Products</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist">Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/userlist">Users</Link>
-                  </li>
+                  {
+                    userInfo.isAdmin && (
+                      <>                      
+                        <li>
+                          <Link to="/productlist">Products</Link>
+                        </li>
+                        <li>
+                          <Link to="/orderlist">Orders</Link>
+                        </li>
+                        <li>
+                          <Link to="/userlist">Users</Link>
+                        </li>
+                      </>
+                    )
+                  }
+
+
                 </ul>
               </div>
             
-            ) : (
-              <Link to="/signin">Sign In</Link>
             ) 
             }
               
@@ -243,6 +231,10 @@ const MenuModal = (props) => {
                     <li className="link-list__item"><Link to="/inspiration" onClick={props.toggleMenu}>Inspiration</Link></li>
                     <li className="link-list__item"><Link to="/news" onClick={props.toggleMenu}>News</Link></li>
                     <li className="link-list__item"><Link to="/contact" onClick={props.toggleMenu}>Contact</Link></li>
+                    {!userInfo && (
+                      <li className="link-list__item"><Link to="/signin" onClick={props.toggleMenu}>Sign In</Link></li>
+                    )}
+                    
                 </ul>
 
                 <ul className="hidden-list">
@@ -262,9 +254,9 @@ const MenuModal = (props) => {
 
           </div>
 
-        <div className="menu-modal__social-links">
+        {/* <div className="menu-modal__social-links">
 
-        </div>
+        </div> */}
 
           
       </MenuModalStyle>

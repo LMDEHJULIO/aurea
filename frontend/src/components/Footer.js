@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {FaFacebookSquare,
 FaInstagram,
 FaTwitter} from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const FooterStyle = styled.footer`
 
@@ -84,6 +85,7 @@ const FooterStyle = styled.footer`
 
       background-color: black;
       padding: 4rem;
+      text-align: center;
 
   
   
@@ -110,7 +112,6 @@ const FooterStyle = styled.footer`
           .footer-nav-link {
             color: #848383;
             list-style: none;
-            text-align: center;
             text-transform: uppercase;
             font-size: 1.2rem;
             font-weight: 500;
@@ -150,13 +151,12 @@ const Footer = () => {
     </div>
     <div className="lower-footer">
       <ul className='footer-nav-links'>
-        <li className='footer-nav-link'>News</li>
-        <li className='footer-nav-link'>Contact</li>
-        <li className='footer-nav-link'>Brand</li>
-        <li className='footer-nav-link'>Licensing</li>
-        <li className='footer-nav-link'>Privacy Policy</li>
-        <li className='footer-nav-link'>Terms and Conditions</li>
-        <li className='footer-nav-link'>Style Guide</li>
+        <li><Link to="/news" className='footer-nav-link'>News</Link></li>
+        <li><Link to="/contact" className='footer-nav-link'>Contact</Link></li>
+        <li><Link to="/brand" className='footer-nav-link'>Brand</Link></li>
+        <li><Link to="#" className='footer-nav-link'>Licensing</Link></li>
+        <li><Link to="#" className='footer-nav-link'>Privacy Policy</Link></li>
+        <li><Link to="#" className='footer-nav-link'>Terms and Conditions</Link></li>
       </ul>
 
     </div>

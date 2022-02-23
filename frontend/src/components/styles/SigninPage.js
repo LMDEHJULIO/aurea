@@ -51,4 +51,8 @@ export const SigninPageStyle = styled.div`
         border-radius: .5rem;
         margin-bottom: 2rem;
     }
+
+    .link-out {
+        color: cadetblue;
+    }
 `

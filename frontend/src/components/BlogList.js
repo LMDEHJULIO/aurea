@@ -9,6 +9,8 @@ const BlogListStyle = styled.div`
     /* padding: 2rem; */
     max-width: 1223px;
     grid-row-gap: 4rem;
+    display: flex;
+    flex-direction: column;
   
     @media screen and (min-width: 620px) {
       /* padding: 6rem; */

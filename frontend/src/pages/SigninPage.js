@@ -71,7 +71,7 @@ export default function SigninPage(props) {
           <div>
             New customer?{' '}
             
-            <Link to={`/register?redirect=${redirect}`}>
+            <Link to={`/register?redirect=${redirect}`} className="link-out">
               Create your account
             </Link>
           </div>

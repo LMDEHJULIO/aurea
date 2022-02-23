@@ -16,7 +16,7 @@ const CartBtnStyle = styled.button`
     margin-right: 1rem;
     border-radius: 100%;
     margin-top: 2rem;
-    z-index:9999;
+    z-index:999;
     display: none;
     justify-content: center;
     align-items: center;
