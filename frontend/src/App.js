@@ -127,7 +127,7 @@ function App() {
 
             <Route
               exact
-              path={process.env.PUBLIC_URL + '/category'}
+              path={process.env.PUBLIC_URL + '/collection'}
               component={CategoryPage}
             />
 

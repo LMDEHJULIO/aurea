@@ -51,7 +51,7 @@ const CtaBumper = ({slides, type, textData, isSlider}) => {
               <p>
               {textData.text}
               </p>
-              <a>{textData.linkText}</a>
+              <a href="/collection">{textData.linkText}</a>
         </div>
 
         {
