@@ -18,8 +18,8 @@ export const ProductCardStyle = styled.div`
       margin-bottom: 0;
     }
 
-    @media screen and (min-width: 1500px){
-      height: 52rem;
+    @media screen and (min-width: 1043px){
+      height: 100%;
     }
   
     // &:not(:last-child) {

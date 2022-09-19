@@ -129,27 +129,13 @@ export const HomePageStyle = styled.div`
       width: fit-content;
       justify-self: center;
       padding: 2rem 4rem;
-    }
+      text-decoration: none;
+      color: black;
 
+      &:visited{
+        color: black;
+      }
 
-    @media screen and (min-width: 768px) {
-      /* padding: 6rem; */
-
-        /* display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: 35px 35px;
-        grid-template-areas:
-          ". ."
-          ". ."; */
-    }
-
-    @media screen and (min-width: 1024px){
-      /* grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr;
-      gap: 2.5rem 4rem;
-      grid-template-areas:
-        ". . ."; */
     }
   }
 
