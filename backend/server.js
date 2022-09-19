@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/aurea', {
 app.use('/api/uploads', uploadRouter);
 
   app.use('/api/users', userRouter);
-  
+   
   // app.get('/', (req, res) => {
   //   res.send('Server is ready');
   // });
