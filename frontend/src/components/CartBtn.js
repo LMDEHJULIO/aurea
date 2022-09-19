@@ -55,7 +55,7 @@ export default function CartBtn(props) {
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="cart-item__image"
+                        // className="cart-item__image"
                       ></img>
                     </div>
 

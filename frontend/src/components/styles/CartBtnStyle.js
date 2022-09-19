@@ -91,6 +91,7 @@ export const CartStyle = styled.div`
     .cart-item {
       display: flex;
 
+
       &__details {
         margin-left: 1.5rem;
         margin-right: auto
@@ -116,7 +117,14 @@ export const CartStyle = styled.div`
     }
 
     .cart-item__image {
-      width: 80px;
+      width: 8rem;
+      height: 4rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
