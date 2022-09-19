@@ -30,7 +30,7 @@ export const ProductCardStyle = styled.div`
       background-color: rgba(124, 124, 124, 0.42);
       padding: 1rem;
       font-family: sans-serif;
-      width: min-content;
+      width: fit-content;
   
       h3 {
         color: white;
