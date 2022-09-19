@@ -76,7 +76,7 @@ const MenuModal = (props) => {
 
                 <h3 className="home-link"><a>/Home</a></h3>
                 <ul className="link-list">
-                    <li className="link-list__item"><Link to="/category" onClick={props.toggleMenu}>Collection</Link></li>
+                    <li className="link-list__item"><Link to="/collection" onClick={props.toggleMenu}>Collection</Link></li>
                     <li className="link-list__item"><Link to="/brand" onClick={props.toggleMenu}>Brand</Link></li>
                     <li className="link-list__item"><Link to="/inspiration" onClick={props.toggleMenu}>Inspiration</Link></li>
                     <li className="link-list__item"><Link to="/news" onClick={props.toggleMenu}>News</Link></li>
