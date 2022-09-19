@@ -16,7 +16,7 @@ export const ProductDetailsStyle = styled.section`
     .product-display__grid {
 
         display: grid;
-        /* height: 170vw; */
+        max-height: 200rem;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, 1fr);
         gap: 1.5rem 1.5rem;
