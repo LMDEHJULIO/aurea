@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import aws from 'aws-sdk';
 
 export const generateToken = (user) => {
 

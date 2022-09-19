@@ -4,7 +4,7 @@ import { deleteOrder, listOrders } from '../actions/orderActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/Message';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
-import { ProductListTable } from './ProductListPage';
+import { ListPageStyle, ListTable } from './styles/ListPageStyle';
 
 export default function OrderListPage(props) {
   const orderList = useSelector((state) => state.orderList);
@@ -26,8 +26,12 @@ export default function OrderListPage(props) {
     }
   };
   return (
-    <div>
-      <h1>Orders</h1>
+    <ListPageStyle>
+
+        <header>
+          <h1>Orders</h1>
+        </header>
+
       {loadingDelete && <Loading></Loading>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (
@@ -35,7 +39,7 @@ export default function OrderListPage(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <ProductListTable className="table">
+        <ListTable className="table">
           <thead>
             <tr>
               <th>ID</th>
@@ -50,17 +54,17 @@ export default function OrderListPage(props) {
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.user.name}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
-                <td>
+                <td className='order-table-label'>{order._id}</td>
+                <td className='order-table-label'>{order.user.name}</td>
+                <td className='order-table-label'>{order.createdAt.substring(0, 10)}</td>
+                <td className='order-table-label'>{order.totalPrice.toFixed(2)}</td>
+                <td className='order-table-label'>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                <td className='order-table-label'>
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)
                     : 'No'}
                 </td>
-                <td>
+                <td className='order-table-label'>
                   <button
                     type="button"
                     className="small"
@@ -81,8 +85,8 @@ export default function OrderListPage(props) {
               </tr>
             ))}
           </tbody>
-        </ProductListTable>
+        </ListTable>
       )}
-    </div>
+    </ListPageStyle>
   );
 }

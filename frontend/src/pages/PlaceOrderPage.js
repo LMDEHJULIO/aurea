@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { createOrder } from '../actions/orderActions';
-import CheckoutSteps from '../components/CheckoutSteps';
-import { ORDER_CREATE_RESET } from '../constants/orderConstants';
-import Loading from '../components/Loading';
-import MessageBox from '../components/Message';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { createOrder } from "../actions/orderActions";
+import CheckoutSteps from "../components/CheckoutSteps";
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
+import Loading from "../components/Loading";
+import MessageBox from "../components/Message";
 
 export default function PlaceOrderPage(props) {
-
   const cart = useSelector((state) => state.cart);
 
   if (!cart.paymentMethod) {
-    props.history.push('/payment');
+    props.history.push("/payment");
   }
   const orderCreate = useSelector((state) => state.orderCreate);
 
@@ -27,7 +26,7 @@ export default function PlaceOrderPage(props) {
   cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
 
   cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
-  
+
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
   const dispatch = useDispatch();
 
@@ -41,7 +40,7 @@ export default function PlaceOrderPage(props) {
       dispatch({ type: ORDER_CREATE_RESET });
     }
   }, [dispatch, order, props.history, success]);
-  
+
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>

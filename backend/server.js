@@ -2,12 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
-import orderRouter from './routers/orderRouter.js';
-// import 'dotenv/config';
+import orderRouter from './routers/orderRouter.js';;
 import dotenv from 'dotenv';
 import path from 'path';
 import uploadRouter from './routers/uploadRouter.js';
 import newsRouter from './routers/newsRouter.js';
+
+
 dotenv.config();
 
 const app = express();
@@ -15,7 +16,6 @@ const app = express();
 app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
-
 
 const port = process.env.PORT || 5000
 

@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Axios from 'axios';
-import { detailsProduct, updateProduct } from '../actions/productActions';
-import Loading from '../components/Loading';
-import MessageBox from '../components/Message';
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Axios from "axios";
+import { detailsProduct, updateProduct } from "../actions/productActions";
+import Loading from "../components/Loading";
+import MessageBox from "../components/Message";
+import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
 export default function ProductEditPage(props) {
   const productId = props.match.params.id;
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
-  const [category, setCategory] = useState('');
-  const [countInStock, setCountInStock] = useState('');
-  const [brand, setBrand] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
+  const [countInStock, setCountInStock] = useState("");
+  const [brand, setBrand] = useState("");
+  const [description, setDescription] = useState("");
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
   const productUpdate = useSelector((state) => state.productUpdate);
-  
+
   const {
     loading: loadingUpdate,
     error: errorUpdate,
@@ -30,7 +30,7 @@ export default function ProductEditPage(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (successUpdate) {
-      props.history.push('/productlist');
+      props.history.push("/productlist");
     }
     if (!product || product._id !== productId || successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -45,7 +45,6 @@ export default function ProductEditPage(props) {
       setDescription(product.description);
     }
   }, [product, dispatch, productId, successUpdate, props.history]);
-
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -65,19 +64,19 @@ export default function ProductEditPage(props) {
   };
 
   const [loadingUpload, setLoadingUpload] = useState(false);
-  const [errorUpload, setErrorUpload] = useState('');
+  const [errorUpload, setErrorUpload] = useState("");
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
-    bodyFormData.append('image', file);
+    bodyFormData.append("image", file);
     setLoadingUpload(true);
     try {
-      const { data } = await Axios.post('/api/uploads/', bodyFormData, {
+      const { data } = await Axios.post("/api/uploads/s3", bodyFormData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
@@ -88,7 +87,6 @@ export default function ProductEditPage(props) {
       setLoadingUpload(false);
     }
   };
-
 
   return (
     <div>

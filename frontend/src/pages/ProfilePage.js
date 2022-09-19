@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { detailsUser, updateUserProfile } from '../actions/userActions';
-import Loading from '../components/Loading';
-import MessageBox from '../components/Message';
-import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { detailsUser, updateUserProfile } from "../actions/userActions";
+import Loading from "../components/Loading";
+import MessageBox from "../components/Message";
+import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
 export default function ProfilePage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -35,7 +35,7 @@ export default function ProfilePage() {
     e.preventDefault();
     // dispatch update profile
     if (password !== confirmPassword) {
-      alert('Password and Confirm Password Are Not Matched');
+      alert("Password and Confirm Password Are Not Matched");
     } else {
       dispatch(updateUserProfile({ userId: user._id, name, email, password }));
     }

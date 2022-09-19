@@ -1,64 +1,77 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import {
-  createProduct,
-  deleteProduct,
-  listProducts,
-} from '../actions/productActions';
+import { createNews, deleteNews, listNews } from '../actions/newsActions';
 import Loading from '../components/Loading';
 import MessageBox from '../components/Message';
-import {
-  PRODUCT_CREATE_RESET,
-  PRODUCT_DELETE_RESET,
-} from '../constants/productConstants';
-import { ListPageStyle, ListTable } from './styles/ListPageStyle';
+import { NEWS_CREATE_RESET, NEWS_DELETE_RESET } from '../constants/newsConstants';
+import { ListTable } from './styles/ListPageStyle';
 
-export default function ProductListPage(props) {
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
 
-  const productCreate = useSelector((state) => state.productCreate);
+
+const ListPageStyle = styled.div`
+  padding-top: 3rem;
+  grid-template-columns: 3rem auto 3rem;
+
+  header {
+    grid-column: 2;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  @media screen and (min-width: 768px){
+    display: grid;
+    grid-template-columns: 3rem auto 3rem;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+`
+
+export default function NewsListPage(props) {
+  const newsList = useSelector((state) => state.newsList);
+  const { loading, error, news } = newsList;
+
+  const newsCreate = useSelector((state) => state.newsCreate);
   const {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    product: createdProduct,
-  } = productCreate;
+    news: createdNews,
+  } = newsCreate;
 
-  const productDelete = useSelector((state) => state.productDelete);
+  const newsDelete = useSelector((state) => state.newsDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
-  } = productDelete;
+  } = newsDelete;
 
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
-      dispatch({ type: PRODUCT_CREATE_RESET });
-      props.history.push(`/product/${createdProduct._id}/edit`);
+      dispatch({ type: NEWS_CREATE_RESET });
+      props.history.push(`/product/${createdNews._id}/edit`);
     }
     if (successDelete) {
-      dispatch({ type: PRODUCT_DELETE_RESET });
+      dispatch({ type: NEWS_DELETE_RESET });
     }
-    dispatch(listProducts());
-  }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
+    dispatch(listNews());
+  }, [createdNews, dispatch, props.history, successCreate, successDelete]);
 
-  const deleteHandler = (product) => {
+  const deleteHandler = (news) => {
     if (window.confirm('Are you sure to delete?')) {
-      dispatch(deleteProduct(product._id));
+      dispatch(deleteNews(news._id));
     }
   };
   const createHandler = () => {
-    dispatch(createProduct());
+    dispatch(createNews());
   };
   return (
-    <ListPageStyle>
+    <ListPageStyle forNews={true}>
       <header>
-        <h1>Products</h1>
+        <h1>Blogs</h1>
         <button type="button" className="primary" onClick={createHandler}>
-          Create Product
+          Create New Blog
         </button>
       </header>
 
@@ -76,27 +89,22 @@ export default function ProductListPage(props) {
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>BRAND</th>
+              <th>TITLE</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
+
           <tbody>
-            {products.map((product) => (
-              <tr key={product._id}>
-                <td className="product-table-label">{product._id}</td>
-                <td className="product-table-label">{product.name}</td>
-                <td className="product-table-label">{product.price}</td>
-                <td className="product-table-label">{product.category}</td>
-                <td className="product-table-label">{product.brand}</td>
-                <td className="product-table-label">
+            {news.map((news) => (
+              <tr key={news._id}>
+                <td className="news-table-label">{news._id}</td>
+                <td className="news-table-label">{news.title}</td>
+                <td className="news-table-label">
                   <button
                     type="button"
                     className="small"
                     onClick={() =>
-                      props.history.push(`/product/${product._id}/edit`)
+                      props.history.push(`/news/${news._id}/edit`)
                     }
                   >
                     Edit
@@ -104,7 +112,7 @@ export default function ProductListPage(props) {
                   <button
                     type="button"
                     className="small"
-                    onClick={() => deleteHandler(product)}
+                    onClick={() => deleteHandler(news)}
                   >
                     Delete
                   </button>
