@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import { CtaBumperStyle } from './styles/CtaBumperStyle';
 
 
-const CtaBumper = ({slides, type, textData, isSlider}) => {
+const CtaBumper = ({slides, type, title, text, defaultLink, loremText, isSlider, backgroundImg, link}) => {
 
   const [current, setCurrent] = useState(0);
   const length = slides?.length;
@@ -42,16 +42,27 @@ const CtaBumper = ({slides, type, textData, isSlider}) => {
                             <img src={slides[current].image} sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcSet={`${slides[current].image}.jpg 1750w`} alt="" className="bumper-image"/>
                     </div>
             }
+
+            {
+              type === 'news' &&
+              <img className='bumper-imge' src={backgroundImg} sizes="(max-width: 767px) 100vw, (max-width: 991px) 87vw, 69vw" srcSet={`${backgroundImg} 500w, ${backgroundImg} 800w, ${backgroundImg} 1750w`} />
+            }
           </div>
 
 
 
         <div className="bumper__content bumper__content--furniture">
-              <h3 className="bumper__title">{textData.title}</h3>
+              {title && <h3 className="bumper__title">{title}</h3>}
               <p>
-              {textData.text}
+                {loremText ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit varius in eros elementum tristique." : text}
               </p>
-              <a href="/collection">{textData.linkText}</a>
+              <a href="/collection">
+                {
+                  defaultLink ? 
+                  "View the Collection":
+                  link
+                }
+              </a>
         </div>
 
         {

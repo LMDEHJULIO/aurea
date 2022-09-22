@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-export const NewsPageStyle = styled.div`
+export const NewsIdPageStyle = styled.div`
 
     padding: 2rem 0;
     grid-template-columns: 2rem auto 2rem;
     display: grid;
+
+    section{
+        grid-column: 2;
+    }
 
     @media screen and (min-width: 450px){
         padding: 6rem 0;

@@ -18,6 +18,24 @@ export const CartPageStyle = styled.div`
         /* width: min-content; */
         padding: 0 2rem;
         justify-self: center;
+        max-height: 40rem;
+        overflow-y: scroll;
+
+        ::-webkit-scrollbar {
+            width: 0.25rem;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 1px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: black;
+            border-radius: 10px;
+        }
 
         @media screen and (min-width: 745px){
             width: min-content;

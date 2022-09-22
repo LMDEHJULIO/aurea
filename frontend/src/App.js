@@ -29,6 +29,7 @@ import ContactPage from './pages/ContactPage.js';
 import BrandPage from './pages/BrandPage.js';
 import CartBtn from './components/CartBtn.js';
 import NewsListPage from './pages/NewsListPage.js';
+import NewsByIdPage from './pages/NewsById.js';
 import { GlobalApplicationStyle } from './GlobalApplicationStyle.js';
 
 // import Footer from './Footer';
@@ -112,6 +113,12 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + '/news/:id/edit'}
             component={NewsEditPage}
+          />
+
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + '/news/:id/'}
+            component={NewsByIdPage}
           />
 
           <AdminRoute

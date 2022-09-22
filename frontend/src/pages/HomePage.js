@@ -76,7 +76,7 @@ const HomePage = () => {
           </section>
             
           <section className="section-bumper"> 
-            <CtaBumper textData={bumperData[0]} type="furniture" className="cta-bumper--furniture"/>
+            <CtaBumper title="Furniture" loremText type="furniture" defaultLink className="cta-bumper--furniture"/>
           </section>
           
 
@@ -88,7 +88,7 @@ const HomePage = () => {
           </section>
 
           <section className="section-bumper">
-            <CtaBumper textData={bumperData[1]} type="objects"/>
+            <CtaBumper title="Objects" defaultLink loremText type="objects"/>
           </section>
 
           <section className="section-news">
@@ -101,7 +101,7 @@ const HomePage = () => {
  
             {/* <SliderBumper slides={BumperData}/> */}
           <section className="section-bumper--slider">
-            <CtaBumper textData={bumperData[0]} isSlider slides={BumperData}/>
+            <CtaBumper title="Varius Enim" loremText isSlider slides={BumperData}/>
           </section>
             
           <section className="full-width-bumper">

@@ -96,7 +96,7 @@ export default function Cart(props) {
 
       <p className='cart-page__warning'>Before checkout, let's double check your cart items.</p>
 
-      <div className="cart-list">
+      <div>
         
 
 
